@@ -2,21 +2,28 @@ package com.irfanhkm.services;
 
 abstract class RupiahChangerAbstract {
     /**
-     * Angka yang akan dikalikan ketika melakukan konversi ke rupiah
+     * ini merupakan harga dasar dari rupiah
      */
-    public double oneRupiahPrice = 12000;
+    public double baseRupiahPrice = 12000;
 
-    public String currencyString = "dollar";
+    /**
+     * Suffix currency, ex: Dollar
+     */
+    public String suffixCurrency = "Dollar";
 
-    public String currencySymbol = "$";
+    /**
+     * Prefix currency, ex: $
+     */
+    public String prefixCurrency = "$";
 
     protected void output(double result, double inputMoney)
     {
-        System.out.println("Dengan Rp "+ (long) inputMoney +" anda memperoleh "+ currencySymbol +""+ (long) result +" " + currencyString);
+        System.out.println("Dengan Rp "+ (long) inputMoney +" anda memperoleh "+ prefixCurrency
+            +""+ (long) result +" " + suffixCurrency);
     }
 
     public void calculate(double inputMoney) {
-        double result = oneRupiahPrice * inputMoney;
+        double result = inputMoney / baseRupiahPrice;
         output(result, inputMoney);
     }
 }
