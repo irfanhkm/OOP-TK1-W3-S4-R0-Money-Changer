@@ -21,3 +21,7 @@ switch (enumValue) {
         System.out.println("Currency belum dissuport");
     }
 ```
+
+There is abstract class you can use for blueprint implement in other service:
+
+`src/com.irfanhkm/enums/services/RupiahChangerAbstract`

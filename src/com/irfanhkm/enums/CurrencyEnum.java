@@ -2,7 +2,7 @@ package com.irfanhkm.enums;
 
 public enum CurrencyEnum {
     DOLLAR("USD", true),
-    EURO("Euro", true),
+    EURO("Euro", false),
     POUNDSTERLING("Pounds", false);
 
     private final String detail;

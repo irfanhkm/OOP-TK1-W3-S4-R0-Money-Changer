@@ -2,7 +2,7 @@ package com.irfanhkm.services;
 
 abstract class RupiahChangerAbstract {
     /**
-     * Angka yang akan dikalikan ketika melkaukan konversi ke rupiah
+     * Angka yang akan dikalikan ketika melakukan konversi ke rupiah
      */
     public double oneRupiahPrice = 12000;
 
