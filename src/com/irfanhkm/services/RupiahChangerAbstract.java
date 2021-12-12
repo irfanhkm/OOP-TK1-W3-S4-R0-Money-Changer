@@ -1,6 +1,14 @@
 package com.irfanhkm.services;
 
-abstract class RupiahChangerAbstract {
+import java.text.DecimalFormat;
+
+public abstract class RupiahChangerAbstract {
+
+    /**
+     * formmating zero outside comma
+     */
+    private static final DecimalFormat dfZero = new DecimalFormat("0.00");
+
     /**
      * ini merupakan harga dasar dari rupiah
      */
@@ -18,8 +26,8 @@ abstract class RupiahChangerAbstract {
 
     protected void output(double result, double inputMoney)
     {
-        System.out.println("Dengan Rp "+ (long) inputMoney +" anda memperoleh "+ prefixCurrency
-            +""+ (long) result +" " + suffixCurrency);
+        System.out.println("Dengan Rp "+ inputMoney +" anda memperoleh "+ prefixCurrency
+            +""+ dfZero.format(result) +" " + suffixCurrency);
     }
 
     public void calculate(double inputMoney) {
