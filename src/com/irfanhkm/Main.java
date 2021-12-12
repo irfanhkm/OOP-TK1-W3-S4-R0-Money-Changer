@@ -53,6 +53,12 @@ public class Main {
         } while (true);
     }
 
+    /**
+     * Input: List<CurrencyEnum>
+     * @Ouput: USD | EURO | BATH | YEN
+     * @param List<CurrencyEnum> activeCurrency
+     * @return String strBuilder
+     */
     protected static String mapListActiveCurrency(List<CurrencyEnum> activeCurrency) {
         StringBuilder strBuilder = new StringBuilder();
         for (CurrencyEnum curr : activeCurrency) {
