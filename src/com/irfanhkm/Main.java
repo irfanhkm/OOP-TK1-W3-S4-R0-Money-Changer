@@ -5,12 +5,14 @@ import com.irfanhkm.services.EuroChangerService;
 import com.irfanhkm.services.PoundsterlingChangerService;
 import com.irfanhkm.services.USDChangerService;
 import java.util.InputMismatchException;
+import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args){
-        String activeCurrency = CurrencyEnum.getActiveCurrency();
+        List<CurrencyEnum> activeCurrency = CurrencyEnum.getActiveCurrency();
 
         Scanner scanner = new Scanner(System.in);
 
@@ -18,13 +20,14 @@ public class Main {
         System.out.println("============================== \n \n");
         do {
             try {
-                System.out.print("Masukkan Jenis Mata Uang Asing " + activeCurrency + " : ");
+
+                System.out.print("Masukkan Jenis Mata Uang Asing " + mapListActiveCurrency(activeCurrency) + " : ");
                 String inputCurrency = scanner.nextLine();
-                CurrencyEnum enumValue = CurrencyEnum.isMemberAndActive(inputCurrency);
-                if (enumValue != null) {
+                Optional<CurrencyEnum> enumValue = activeCurrency.stream().filter(currencyEnum -> currencyEnum.detail.equals(inputCurrency)).findFirst();
+                if (enumValue.isPresent()) {
                     System.out.print("Masukkan Nominal Uang yang akan ditukarkan : ");
                     double money = scanner.nextDouble();
-                    switch (enumValue) {
+                    switch (enumValue.get()) {
                         case DOLLAR:
                             (new USDChangerService()).calculate(money);
                             break;
@@ -48,5 +51,17 @@ public class Main {
             }
 
         } while (true);
+    }
+
+    protected static String mapListActiveCurrency(List<CurrencyEnum> activeCurrency) {
+        StringBuilder strBuilder = new StringBuilder();
+        for (CurrencyEnum curr : activeCurrency) {
+            if (strBuilder.length() > 0)
+                strBuilder.append(" | ");
+
+            strBuilder.append(curr.detail);
+        }
+        return strBuilder.toString();
+
     }
 }

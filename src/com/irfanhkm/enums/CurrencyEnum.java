@@ -1,11 +1,14 @@
 package com.irfanhkm.enums;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public enum CurrencyEnum {
     DOLLAR("USD", true),
     EURO("Euro", true),
     POUNDSTERLING("Pounds", false);
 
-    private final String detail;
+    public final String detail;
     private final boolean isActive;
 
     CurrencyEnum(String detail, boolean isActive) {
@@ -13,25 +16,14 @@ public enum CurrencyEnum {
         this.isActive = isActive;
     }
 
-    static public CurrencyEnum isMemberAndActive(String name) {
+    static public List<CurrencyEnum> getActiveCurrency() {
         CurrencyEnum[] classValue = CurrencyEnum.values();
-        for (CurrencyEnum value : classValue)
-            if (value.detail.equals(name) && value.isActive)
-                return value;
-        return null;
-    }
-
-    static public String getActiveCurrency() {
-        CurrencyEnum[] classValue = CurrencyEnum.values();
-        StringBuilder activeCurrency = new StringBuilder();
+        List<CurrencyEnum> activeCurrency = new ArrayList<>();
         for (CurrencyEnum value : classValue) {
             if (value.isActive) {
-                if (activeCurrency.length() > 0) {
-                    activeCurrency.append(" | ");
-                }
-                activeCurrency.append(value.detail);
+                activeCurrency.add(value);
             }
         }
-        return activeCurrency.toString();
+        return activeCurrency;
     }
 }
