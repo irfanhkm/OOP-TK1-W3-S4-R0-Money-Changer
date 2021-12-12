@@ -2,6 +2,7 @@ package com.irfanhkm;
 
 import com.irfanhkm.enums.CurrencyEnum;
 import com.irfanhkm.services.EuroChangerService;
+import com.irfanhkm.services.PoundsterlingChangerService;
 import com.irfanhkm.services.USDChangerService;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -31,8 +32,8 @@ public class Main {
                             (new EuroChangerService()).calculate(money);
                             break;
                         case POUNDSTERLING:
-                            // TODO euro poundsterling
-                            System.out.println("Currency belum dissuport");
+                            (new PoundsterlingChangerService()).calculate(money);
+                            break;
                     }
 
                 } else {
