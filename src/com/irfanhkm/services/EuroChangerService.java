@@ -7,5 +7,4 @@ public class EuroChangerService extends RupiahChangerAbstract {
         this.suffixCurrency = "Euro";
         this.prefixCurrency = "€";
     }
-
 }

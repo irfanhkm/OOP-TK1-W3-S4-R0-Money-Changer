@@ -4,17 +4,17 @@ abstract class RupiahChangerAbstract {
     /**
      * ini merupakan harga dasar dari rupiah
      */
-    public double baseRupiahPrice = 12000;
+    protected double baseRupiahPrice = 12000;
 
     /**
      * Suffix currency, ex: Dollar
      */
-    public String suffixCurrency = "Dollar";
+    protected String suffixCurrency = "Dollar";
 
     /**
      * Prefix currency, ex: $
      */
-    public String prefixCurrency = "$";
+    protected String prefixCurrency = "$";
 
     protected void output(double result, double inputMoney)
     {
